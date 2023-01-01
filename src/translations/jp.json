@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "common": {
+      "next": "Next..."
+    },
+    "menu": {
+      "home": {
+        "bnpl": "menu.home.bnpl JP: {{param}}<br>New line."
+      }
+    }
+  }
+}

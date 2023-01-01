@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "common": {
+      "next": "Next\nBreak line... with \\n in json file, only using `t`, don't need to use `Trans`"
+    },
+    "menu": {
+      "home": {
+        "bnpl": "menu.home.bnpl EN: {{param}}<br>New line."
+      }
+    }
+  }
+}

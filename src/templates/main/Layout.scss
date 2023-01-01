@@ -1,0 +1,44 @@
+body {
+  --main-color: #{$main-color};
+  --main-accent-color: #{$main-accent-color};
+  --secondary-accent-color: #{$secondary-accent-color};
+  --main-background-color: #{$main-background-color};
+  --secondary-background-color: #{$secondary-background-color};
+  --zIndex-loading: #{$zIndex-loading};
+  --zIndex-popup: #{$zIndex-popup};
+
+  &.light {
+    --main-color: #{$secondary-color};
+    --main-accent-color: #{$main-background-color};
+    --secondary-accent-color: #{$secondary-background-color};
+    --main-background-color: #{$main-accent-color};
+    --secondary-background-color: #{$secondary-accent-color};
+  }
+
+  // COLOR VARIANT
+  --color--scrim: #{$color--scrim};
+  --color--surface-tint: #{$color--surface-tint};
+  --color--surface: #{$color--surface};
+  --color--on-secondary-container: #{$color--on-secondary-container};
+  --color--on-surface-variant: #{$color--on-surface-variant};
+  --color--on-surface: #{$color--on-surface};
+  --color--on-primary-container: #{$color--on-primary-container};
+
+  // CUSTOM COLORS
+  --color--green50: #{$color--green50};
+  --color--green40: #{$color--green40};
+  --color--green30: #{$color--green30};
+  --color--green20: #{$color--green20};
+  --color--green10: #{$color--green10};
+
+  margin: 0;
+  background-color: var(--main-background-color);
+  color: var(--main-accent-color);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transition: color 0.5s;
+  transition: background-color 0.5s;
+}

@@ -1,0 +1,122 @@
+include:
+  - project: credify-pte-ltd/devops/ci
+    file: /templates/.gitlab-ci-template.yml
+    ref: managed-services
+
+unit-test:
+  stage: test
+  image: node:14.20.1-alpine3.16
+  script:
+    - yarn --frozen-lockfile --silent --ignore-optional
+    - yarn test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: ($CI_COMMIT_REF_NAME == "development" || $CI_COMMIT_REF_NAME == "master")
+
+scan-code:
+  extends:
+    - .semgrep
+
+.retail-portal-vars:
+  variables:
+    PROJECT_PATH: .
+
+.retail-portal-build-dev:
+  extends:
+    - .retail-portal-vars
+    - .scoped-service-build
+  variables:
+    PROJECT_NAME: retail-portal
+    DOCKER_FILE: ci.Dockerfile.dev
+
+.retail-portal-build:
+  extends:
+    - .retail-portal-vars
+    - .scoped-service-build
+  variables:
+    PROJECT_NAME: retail-portal
+    DOCKER_FILE: ci.Dockerfile
+
+.retail-portal-tag:
+  extends:
+    - .retail-portal-vars
+    - .service-tag
+  variables:
+    PROJECT_NAME: retail-portal
+
+.retail-portal-spinnaker:
+  extends:
+    - .retail-portal-vars
+    - .spinnaker
+  variables:
+    PROJECT_NAME: retail-portal
+#-----------------dev-----------------#
+retail-portal-build-dev:
+  extends:
+    - .dev-env
+    - .retail-portal-build-dev
+
+retail-portal-tag-dev:
+  extends:
+    - .dev-env
+    - .retail-portal-tag
+
+retail-portal-spinnaker-dev:
+  extends:
+    - .dev-env
+    - .retail-portal-spinnaker
+
+scan-docker-image:
+  extends:
+    - .dev-env
+    - .retail-portal-vars
+    - .scan-image
+  variables:
+    PROJECT_NAME: retail-portal
+    DOCKER_IMAGE: "$DOCKER_REGISTRY/$PROJECT_NAME:$IMAGE_TAG"
+  allow_failure: true
+#-----------------sit-----------------#
+retail-portal-build-master:
+  extends:
+    - .sit-env
+    - .retail-portal-build
+
+retail-portal-tag-sit:
+  extends:
+    - .sit-env
+    - .retail-portal-tag
+
+retail-portal-spinnaker-sit:
+  extends:
+    - .sit-env
+    - .retail-portal-spinnaker
+#-----------------uat-----------------#
+retail-portal-tag-uat:
+  extends:
+    - .uat-env
+    - .retail-portal-tag
+
+retail-portal-spinnaker-uat:
+  extends:
+    - .uat-env
+    - .retail-portal-spinnaker
+#-----------------sbx-----------------#
+retail-portal-tag-sbx:
+  extends:
+    - .sbx-env
+    - .retail-portal-tag
+
+retail-portal-spinnaker-sbx:
+  extends:
+    - .sbx-env
+    - .retail-portal-spinnaker
+#-----------------prd-----------------#
+retail-portal-tag-prd:
+  extends:
+    - .prd-env
+    - .retail-portal-tag
+
+retail-portal-spinnaker-prd:
+  extends:
+    - .prd-env
+    - .retail-portal-spinnaker

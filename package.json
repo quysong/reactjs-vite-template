@@ -1,0 +1,95 @@
+{
+  "name": "retail-portal-frontend",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build-dev": "tsc && vite build --sourcemap=true",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "test": "CI=true jest --silent"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "i18next": "^21.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^11.12.0",
+    "react-router-dom": "^6.4.3",
+    "credify-react-components-v2": "0.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/plugin-syntax-jsx": "^7.18.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@credify/api-docs": "^1.5.5",
+    "@testing-library/dom": "^8.19.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "babel-jest": "^29.3.1",
+    "babel-preset-react-app": "^10.0.1",
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript-prettier": "^5.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "postcss": "^8.4.19",
+    "prettier": "^2.8.0",
+    "sass": "^1.56.1",
+    "styled-components": "4.4.0",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-tsconfig-paths": "^3.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE >= 11"
+  ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!(.*\\.mjs)|date-fns)"
+    ],
+    "rootDir": "./",
+    "modulePaths": [
+      "<rootDir>"
+    ]
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "react-app"
+        ]
+      }
+    }
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
